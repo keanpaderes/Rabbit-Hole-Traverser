@@ -8,4 +8,4 @@ Tired of those "never-ending" quote tweets that just takes up your time rummagin
 * Run `pip install -r requirements.txt` to install all required python libraries
 
 ## Usage
-To start the script, run `python rabbit_hole_traverser <is_verbose?> <starting_tweet_url>`.  Add the starting tweet url in place of <starting_tweet_url>. (Optional, default=true) Add 'true' or 'false' in place of <is_verbose>.
+To start the script, run `python rabbit_hole_traverser <is_verbose?> <starting_tweet_url>`.  Add the starting tweet url in place of `<starting_tweet_url>`. (Optional, default=true) Add `true` or `false` in place of `<is_verbose>`.
