@@ -30,9 +30,12 @@ while not is_it_the_light:
     req = requests.get(req_url, headers = headers)
     soup = BeautifulSoup(req.text, "html.parser")
 
-    is_protected_timeline = soup.find_all("div", class_="ProtectedTimeline")[0]
+    is_protected_timeline = soup.find_all("div", class_="ProtectedTimeline")
 
-    if not is_protected_timeline:
+    if(len(is_protected_timeline) > 0):
+        is_premature = True
+        is_it_the_light = True
+    else:
         tweet_details = soup.find_all("div", class_="permalink-tweet")[0]
         parsed_json_details = json.loads(tweet_details.get("data-reply-to-users-json"))[0]
         current_user = parsed_json_details["name"] + " @" + parsed_json_details["screen_name"]
@@ -46,9 +49,6 @@ while not is_it_the_light:
             rabbit_hole_level = rabbit_hole_level + 1
         else:
             is_it_the_light = True
-    else:
-        is_premature = True
-        is_it_the_light = True
 
 if not is_premature:
     print("Your tweet (\'" + rabbit_hole_start + "\') will take you " + str(rabbit_hole_level) + " tweets to reach the light if you go down that rabbit hole. (" + root + url + ")")
